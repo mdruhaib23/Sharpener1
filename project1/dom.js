@@ -31,7 +31,7 @@ li[1].textContent = 'hello 2';
 li[1].style.fontWeight = 'bold';
 li[1].style.backgroundColor='green';
 
-// items.style.backgroundColor = '#f4f4f4';
+//items.style.backgroundColor = '#f4f4f4';
 
 for(var i=0;i<li.length;i++){
     li[i].style.backgroundColor = '#f4f4f4';
@@ -57,15 +57,3 @@ var seconditem = document.querySelector('.list-group-item:nthchiild(2)');
 seconditem.style.color = 'coral';
 
 
-//QUERYSELECTORALL //
-var title = document.querySelectorAll('.title');
-
-console.log(titles);
-titles[0].textContent = 'Hello';
-
-var odd = document.querySelectorAll('li:nth-child(odd)');
-
-for(var i = 0; i < odd,length; i++){
-    odd[i].style.backgroundColor = '#f4f4f4';
-    even[i].style.backgroundColor = '#ccc';
-}
