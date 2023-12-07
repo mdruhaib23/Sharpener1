@@ -56,4 +56,76 @@ lastitem.style.color = ' blue';
 var seconditem = document.querySelector('.list-group-item:nthchiild(2)');
 seconditem.style.color = 'coral';
 
+//QUERYSELECTORALL //
+var title = document.querySelectorAll('.title');
+
+console.log(titles);
+titles[0].textContent = 'Hello';
+
+var odd = document.querySelectorAll('li:nth-child(odd)');
+
+for(var i = 0; i < odd,length; i++){
+    odd[i].style.backgroundColor = '#f4f4f4';
+    even[i].style.backgroundColor = '#ccc';
+}
+
+// TRAVERSING THE DOM //
+var itemlist = document.querySelector('#items');
+// parentElement//
+console.log(itemlist.parentElement);
+itemlist.parentElement.style.backgroundColor = '#f4f4f4';
+console.log(itemlist.parentElement.parentElement.parentElement);
+// childNode //
+console.log(itemlist.childNodes)
+
+console.log(itemlist.children);
+console.log(itemlist.children[1]);
+itemlist.children[1].style.backgroundColor = 'yellow';
+
+//FirstChild
+console.log(itemlist.firstChild);
+// // firstElementChild //
+console.log(itemlist.firstElementChild);
+itemlist.lastElementChild.textContent = 'Hello 4';
+
+//nextSibling
+console.log(itemlist.nextSibling);
+//nextElementSibling
+console.log(itemlist.nextElementSibling);
+
+//previousSibling
+console.log(itemlist.previousElementSibling);
+//previousElementSibling
+console.log(itemlist.previousElementSibling);
+itemlist.previousElementSibling.style.color = 'green';
+
+// createElement
+
+//Create a div
+var newDiv = document.createElement('div');
+
+//Add Class
+newDiv.className = 'hello';
+
+//Add id
+newDiv.id = 'hello1';
+
+
+//Add attr
+newDiv.setAttribute('title','Hello Div');
+
+//Create text node
+var newDivText = document.createTextNode('Hello World');
+
+//Add text to div
+newDiv.appendChild(newDivText);
+
+var container = document.querySelector('header .container');
+var h1 = document.querySelector('header h1');
+
+console.log(newDiv);
+
+newDiv.style.fontSize = '30px';
+
+container.insertBefore(newDiv, h1);
 
