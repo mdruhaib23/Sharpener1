@@ -10,12 +10,14 @@
         #listOfitems li {
             margin-bottom: 5px;
         }
-        .delete-btn {
+        .delete-btn,
+        .edit-btn {
             background-color: red;
             color: white;
             border: none;
             padding: 5px 10px;
             cursor: pointer;
+            margin-right: 5px;
         }
     </style>
 </head>
@@ -64,8 +66,25 @@
                 parentElem.removeChild(li);
             };
             
-            // Append delete button to the list item
+            // Create edit button
+            const editBtn = document.createElement('button');
+            editBtn.innerText = 'Edit';
+            editBtn.classList.add('edit-btn');
+            editBtn.onclick = function() {
+                // Implement edit functionality here
+                // For example, you can populate the form fields with obj data for editing
+                document.getElementById('username').value = obj.name;
+                document.getElementById('emailId').value = obj.email;
+                document.getElementById('phonenumber').value = obj.phonenumber;
+                
+                // Remove item from localStorage and list when editing (customize based on your edit logic)
+                localStorage.removeItem(obj.email);
+                parentElem.removeChild(li);
+            };
+            
+            // Append buttons to the list item
             li.appendChild(deleteBtn);
+            li.appendChild(editBtn);
             parentElem.appendChild(li);
         }
     </script>
