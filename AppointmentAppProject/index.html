@@ -1,39 +1,73 @@
+<!DOCTYPE html>
 <html>
-    <body>
-        <form onsubmit="saveToLocalStorage(event)">
-            <label>Name</label>
-            <input type="text" name="username" id="username" required/>
-            <label>EmailId</label>
-            <input type="email" name="emailId" id="emailId" required/>
-            <label>Phone Number</label>
-            <input type="tel" name="phonenumber" id="phonenumber" />
-            <button>Submit</button>
-        </form>
-        <ul id='listOfitems'></ul>
-        <script>
-            // Function to save data to local storage
-            function saveToLocalStorage(event) {
-                event.preventDefault();
-                const name = event.target.username.value;
-                const email = event.target.emailId.value;
-                const phonenumber = event.target.phonenumber.value;
-                // localStorage.setItem('name', name);
-                // localStorage.setItem('email', email);
-                // localStorage.setItem('phonenumber', phonenumber);
-                const obj ={
-                    name,
-                    email,
-                    phonenumber
-                }
-                localStorage.setItem(obj.email, JSON.stringify(obj))
-                showUserOnScreen(obj)
-            }
-            function showUserOnScreen(obj){
-                    const parentElem = document.getElementById('listOfitems')
-                    parentElem.innerHTML = parentElem.innerHTML + <li>'${bj.name} - ${obj.email} - ${obj.phonenumber}'</li>
-                
-            }
-        
-        </script>
-    </body>
+<head>
+    <style>
+        /* CSS styles */
+        #listOfitems {
+            list-style: none;
+            padding: 0;
+        }
+        #listOfitems li {
+            margin-bottom: 5px;
+        }
+        .delete-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <form onsubmit="saveToLocalStorage(event)">
+        <label>Name</label>
+        <input type="text" name="username" id="username" required/>
+        <label>EmailId</label>
+        <input type="email" name="emailId" id="emailId" required/>
+        <label>Phone Number</label>
+        <input type="tel" name="phonenumber" id="phonenumber"/>
+        <button>Submit</button>
+    </form>
+    <ul id='listOfitems'></ul>
+    <script>
+        // Function to save data to local storage
+        function saveToLocalStorage(event) {
+            event.preventDefault();
+            const name = event.target.username.value;
+            const email = event.target.emailId.value;
+            const phonenumber = event.target.phonenumber.value;
+            
+            const obj ={
+                name,
+                email,
+                phonenumber
+            };
+            
+            localStorage.setItem(obj.email, JSON.stringify(obj));
+            showUserOnScreen(obj);
+        }
+
+        function showUserOnScreen(obj) {
+            const parentElem = document.getElementById('listOfitems');
+            const li = document.createElement('li');
+            li.innerHTML = `${obj.name} - ${obj.email} - ${obj.phonenumber}`;
+            
+            // Create delete button
+            const deleteBtn = document.createElement('button');
+            deleteBtn.innerText = 'Delete';
+            deleteBtn.classList.add('delete-btn');
+            deleteBtn.onclick = function() {
+                // Remove item from localStorage
+                localStorage.removeItem(obj.email);
+                // Remove item from the list
+                parentElem.removeChild(li);
+            };
+            
+            // Append delete button to the list item
+            li.appendChild(deleteBtn);
+            parentElem.appendChild(li);
+        }
+    </script>
+</body>
 </html>
